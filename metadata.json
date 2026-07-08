@@ -1,0 +1,225 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+export interface EducationItem {
+  degree: string;
+  specialization?: string;
+  institution: string;
+  duration: string;
+  grade?: string;
+}
+
+export interface ExperienceItem {
+  role: string;
+  company: string;
+  duration: string;
+  bullets: string[];
+}
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  subtitle?: string;
+  duration?: string;
+  description: string;
+  bullets: string[];
+  tags: string[];
+  category: 'blockchain' | 'ai-ml' | 'data-science' | 'all';
+}
+
+export interface CertificationItem {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialUrl?: string;
+}
+
+export interface SkillGroup {
+  category: string;
+  skills: { name: string; level: number }[];
+}
+
+export const EDUCATION_DATA: EducationItem[] = [
+  {
+    degree: "Bachelor of Engineering (B.E.) in Computer Science and Engineering",
+    specialization: "IoT and Cyber Security including Blockchain Technology",
+    institution: "SNS College of Engineering",
+    duration: "09/2024 – 2028",
+  },
+  {
+    degree: "Senior Secondary Education (XII)",
+    institution: "Sri Saraswathi Vidyalaya Matric Hr. Sec. School",
+    duration: "03/2024",
+    grade: "89%",
+  },
+  {
+    degree: "Secondary Education (X)",
+    institution: "Sri Saraswathi Vidyalaya Matric Hr. Sec. School",
+    duration: "05/2022",
+    grade: "94%",
+  }
+];
+
+export const EXPERIENCE_DATA: ExperienceItem[] = [
+  {
+    role: "Analytics and Insights Intern",
+    company: "TITAN Company",
+    duration: "08/12/2025 – 08/01/2026",
+    bullets: [
+      "Applied machine learning techniques to complex business datasets to uncover growth opportunities.",
+      "Performed detailed trend analysis and developed data-driven forecasting models for retail sales.",
+      "Collaborated with commercial teams to translate raw data analytics into actionable business intelligence."
+    ]
+  },
+  {
+    role: "Research Intern (Blockchain and Quantum Computing)",
+    company: "Samkhya.ai",
+    duration: "01/12/2025 – 31/12/2025",
+    bullets: [
+      "Worked on cutting-edge blockchain and quantum integration projects across Web2 and Web3 architectures.",
+      "Researched quantum-resistant cryptographic algorithms and their application to decentralized systems.",
+      "Developed architectural models and verified smart contract patterns in simulated environments."
+    ]
+  },
+  {
+    role: "AIML Intern",
+    company: "INTERNPE",
+    duration: "07/07/2025 – 03/08/2025",
+    bullets: [
+      "Designed data preprocessing pipelines, resolving missing entries and normalizing training datasets.",
+      "Developed and optimized standard machine learning models, evaluating accuracy and precision.",
+      "Gained hands-on experience in regression, classification, and supervised learning algorithms."
+    ]
+  }
+];
+
+export const PROJECTS_DATA: ProjectItem[] = [
+  {
+    id: "llm-comparison",
+    title: "Comparative Analysis of LLMs",
+    subtitle: "ChatGPT-5.1, Gemini-3.0, Opus-4.5",
+    duration: "Dec 2025",
+    description: "A deep comparative research evaluating the capabilities of state-of-the-art Large Language Models in coding, logical reasoning, and consistency.",
+    bullets: [
+      "Evaluated models across 20+ specialized prompts in smart contract development and data cleaning.",
+      "Measured response accuracy, token efficiency, consistency, and prediction reliability.",
+      "Created a robust visual dashboard summarizing performance scores and architectural insights."
+    ],
+    tags: ["LLM Benchmarking", "Data Analysis", "Prompt Engineering", "Evaluation"],
+    category: "ai-ml"
+  },
+  {
+    id: "ml-predictions",
+    title: "Machine Learning Prediction Suites",
+    subtitle: "IPL Match, Car Price, & Diabetes Predictors",
+    duration: "Jul 2025",
+    description: "An integrated suite of supervised machine learning classifiers and regression models addressing sports analytics, pricing valuation, and medical diagnosis.",
+    bullets: [
+      "IPL Match Prediction: Utilized historical toss, venue, and team data to forecast match outcomes.",
+      "Car Price Prediction: Implemented random forest regression scoring car condition, brand, and mileage.",
+      "Diabetes Prediction: Built a binary classifier processing patient health diagnostics with over 90% test accuracy."
+    ],
+    tags: ["Python", "Scikit-Learn", "Regression", "Classification", "Machine Learning"],
+    category: "ai-ml"
+  },
+  {
+    id: "sales-forecasting",
+    title: "Sales Data Analysis & Forecasting",
+    subtitle: "Python & SQL Retail Intelligence",
+    duration: "Dec 2024",
+    description: "A business intelligence framework designed to analyze multi-year retail datasets, identify seasonal buying trends, and forecast future revenue streams.",
+    bullets: [
+      "Engineered advanced SQL queries to isolate high-value product categories and customer cohorts.",
+      "Applied time-series forecasting (ARIMA / Exponential Smoothing) to predict quarterly sales targets.",
+      "Created highly aesthetic visualization dashboards tracking regional demand and stock levels."
+    ],
+    tags: ["Python", "SQL", "Forecasting", "Data Preprocessing", "Pandas"],
+    category: "data-science"
+  },
+  {
+    id: "scholarship-analysis",
+    title: "Guild Education: Scholarship Awareness Analysis",
+    subtitle: "Socio-economic Data Analytics",
+    duration: "Dec 2024 – Jan 2025",
+    description: "A social impact data analysis project aimed at identifying socio-economic barriers and gaps in scholarship awareness among eligible students.",
+    bullets: [
+      "Processed regional and institutional datasets to trace distribution inequalities in financial aid.",
+      "Identified and cataloged key communication gaps causing low enrollment in available scholarships.",
+      "Formulated policy proposals and communication guidelines backed by analytical graphs."
+    ],
+    tags: ["Data Analytics", "Socio-economic Research", "Visualization", "Policy Strategy"],
+    category: "data-science"
+  }
+];
+
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    category: "Programming",
+    skills: [
+      { name: "Python", level: 90 },
+      { name: "JavaScript (ES6+)", level: 85 },
+      { name: "SQL", level: 80 },
+      { name: "C++", level: 75 },
+      { name: "C", level: 70 }
+    ]
+  },
+  {
+    category: "AI / ML / Data Science",
+    skills: [
+      { name: "Data Preprocessing", level: 90 },
+      { name: "Prediction Models", level: 85 },
+      { name: "Time Series Forecasting", level: 80 },
+      { name: "Scikit-Learn / Pandas", level: 85 }
+    ]
+  },
+  {
+    category: "Blockchain Technology",
+    skills: [
+      { name: "Ethereum Network", level: 75 },
+      { name: "Solidity Smart Contracts", level: 70 },
+      { name: "Web3/Web2 Integration", level: 65 },
+      { name: "Decentralized Apps (DApps)", level: 60 }
+    ]
+  },
+  {
+    category: "Tools & Environments",
+    skills: [
+      { name: "VS Code", level: 95 },
+      { name: "Git & GitHub", level: 85 },
+      { name: "Microsoft Excel", level: 80 },
+      { name: "Jupyter Notebooks", level: 90 }
+    ]
+  }
+];
+
+export const CERTIFICATIONS_DATA: CertificationItem[] = [
+  {
+    title: "Oracle OCI 2025 Certified Data Science Professional",
+    issuer: "Oracle University",
+    date: "Oct 24, 2025",
+  },
+  {
+    title: "Microsoft Azure AI Fundamentals",
+    issuer: "Microsoft",
+    date: "Oct 27, 2025",
+  },
+  {
+    title: "Web3 and Ethereum",
+    issuer: "Coursera / Blockchain Consortium",
+    date: "Jun 2025",
+  },
+  {
+    title: "Machine Learning Fundamentals",
+    issuer: "Kaggle / Stanford Online",
+    date: "Mar 2025",
+  },
+  {
+    title: "JavaScript Fundamentals",
+    issuer: "HackerRank / Udemy",
+    date: "Feb 2025",
+  }
+];
+
+export const LANGUAGES_DATA = ["English", "Tamil", "Telugu", "Kannada"];

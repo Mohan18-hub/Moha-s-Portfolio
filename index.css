@@ -1,0 +1,157 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { useState } from 'react';
+import { SKILL_GROUPS, LANGUAGES_DATA } from '../types';
+import { Shield, Brain, Database, Wrench, ChevronDown, Check, GraduationCap, Languages } from 'lucide-react';
+
+export default function About() {
+  const [activeGroupIndex, setActiveGroupIndex] = useState<number>(0);
+
+  const icons = [Database, Brain, Shield, Wrench];
+  const groupColors = [
+    'border-indigo-500/20 text-indigo-400 bg-indigo-500/5 hover:border-indigo-500/40',
+    'border-blue-500/20 text-blue-400 bg-blue-500/5 hover:border-blue-500/40',
+    'border-violet-500/20 text-violet-400 bg-violet-500/5 hover:border-violet-500/40',
+    'border-cyan-500/20 text-cyan-400 bg-cyan-500/5 hover:border-cyan-500/40'
+  ];
+
+  const barColors = ['bg-indigo-500', 'bg-blue-500', 'bg-violet-500', 'bg-cyan-500'];
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8" id="about-skills-section">
+      {/* Profile summary & background */}
+      <div className="lg:col-span-5 flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
+          <h4 className="text-[10px] uppercase tracking-widest text-white/30 font-mono">
+            Brief Profile
+          </h4>
+          <h3 className="text-2xl font-serif italic text-white/80 tracking-tight">
+            Core Identity
+          </h3>
+        </div>
+
+        <div className="bg-white/5 border border-white/10 p-6 rounded-sm flex flex-col gap-5">
+          <p className="text-sm text-white/60 leading-relaxed font-light italic font-serif">
+            "Enthusiastic and passionate Computer Science & Engineering student at SNS College of Engineering, actively pursuing a specialized curriculum in IoT, Cyber Security, and Blockchain Technology."
+          </p>
+          <p className="text-sm text-white/60 leading-relaxed font-light italic font-serif">
+            "Deeply interested in bridging decentralized architectures with intelligent systems. Gained hands-on experience in ML preprocessing pipelines, blockchain smart contract patterns, and business forecasting tools through high-impact research and company internships."
+          </p>
+
+          {/* Core values cards */}
+          <div className="grid grid-cols-2 gap-3 mt-2">
+            <div className="bg-[#0A0A0B] p-4 rounded-sm border border-white/5 flex flex-col gap-1.5">
+              <Shield className="w-4 h-4 text-white/60" />
+              <span className="text-xs font-medium text-white/80">Cyber & Crypto</span>
+              <span className="text-[10px] text-white/40 font-mono uppercase tracking-widest">Hardened DApps</span>
+            </div>
+            <div className="bg-[#0A0A0B] p-4 rounded-sm border border-white/5 flex flex-col gap-1.5">
+              <Brain className="w-4 h-4 text-white/60" />
+              <span className="text-xs font-medium text-white/80">Data Science</span>
+              <span className="text-[10px] text-white/40 font-mono uppercase tracking-widest">Predictive ML</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Languages block */}
+        <div className="bg-white/5 border border-white/10 p-5 rounded-sm flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-sm bg-[#0A0A0B] text-white/40 border border-white/10">
+              <Languages className="w-4 h-4" />
+            </div>
+            <div>
+              <h4 className="text-[11px] font-medium uppercase tracking-widest text-white/80">Multilingual</h4>
+              <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest mt-1">Cross-cultural</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-1.5 max-w-[200px] justify-end">
+            {LANGUAGES_DATA.map((lang, idx) => (
+              <span
+                key={idx}
+                className="text-[9px] font-mono uppercase tracking-[0.2em] bg-[#0A0A0B] border border-white/10 text-white/60 px-2 py-1 rounded-sm"
+              >
+                {lang}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive technical skills matrix */}
+      <div className="lg:col-span-7 flex flex-col gap-5">
+        <div className="flex flex-col gap-1">
+          <h4 className="text-[10px] uppercase tracking-widest text-white/30 font-mono">
+            Expertise Matrix
+          </h4>
+          <h3 className="text-xl font-serif italic text-white/80 tracking-tight">
+            Specializations
+          </h3>
+          <p className="text-white/40 text-xs font-mono uppercase tracking-widest mt-2">
+            Click on a tech vertical below to view proficiency levels.
+          </p>
+        </div>
+
+        <div className="bg-[#0A0A0B] border border-white/10 rounded-sm overflow-hidden" id="skills-matrix-widget">
+          {/* Skill Group Tabs */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-b border-white/10 bg-white/5">
+            {SKILL_GROUPS.map((group, idx) => {
+              const Icon = icons[idx] || Database;
+              const isActive = activeGroupIndex === idx;
+              const styleClass = groupColors[idx];
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveGroupIndex(idx)}
+                  className={`flex flex-col items-center justify-center p-4 gap-2 transition-all border-b-2 text-center h-[95px] ${
+                    isActive 
+                      ? `border-white text-white bg-white/5` 
+                      : 'border-transparent text-white/40 hover:text-white/60 hover:bg-white/5'
+                  }`}
+                  id={`skill-tab-${idx}`}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] leading-none mt-1">
+                    {group.category.split(' ')[0]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Skills List with Progress bar */}
+          <div className="p-6 min-h-[220px] flex flex-col gap-4">
+            <h4 className="text-[10px] font-mono text-white/30 tracking-[0.3em] border-b border-white/5 pb-2">
+              VERTICAL: {SKILL_GROUPS[activeGroupIndex].category.toUpperCase()}
+            </h4>
+
+            <div className="flex flex-col gap-4 mt-2">
+              {SKILL_GROUPS[activeGroupIndex].skills.map((skill, sIdx) => (
+                <div key={sIdx} className="flex flex-col gap-1.5" id={`skill-item-${activeGroupIndex}-${sIdx}`}>
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="text-white/80 font-light flex items-center gap-1.5 uppercase tracking-widest text-[10px]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                      {skill.name}
+                    </span>
+                    <span className="text-white/40">{skill.level}%</span>
+                  </div>
+
+                  {/* Aesthetic sliding progress bar */}
+                  <div className="w-full bg-[#070708] h-1 rounded-none overflow-hidden border border-white/5">
+                    <div
+                      className={`h-full rounded-none transition-all duration-700 bg-white/60`}
+                      style={{ width: `${skill.level}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
